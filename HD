@@ -1,0 +1,84 @@
+hadoop cluster configuration -
+coresite.xml 
+    <configuration>
+   <property>
+         <name>fs.defaultFS</name>
+         <value>hdfs://JMNGD1BAX310V08:8020</value>
+   </property>
+
+   <property>
+        <name>hadoop.temp.dir</name>
+        <value>/tmp/</value>
+   </property>
+   <property>
+        <name>io.file.buffer.size</name>
+        <value>131072</value>
+   </property>
+<property>
+
+
+hdfs-site.xml configuration file -
+
+   <configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:/disk0/namedir</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:/disk0/datadir</value>
+    </property>
+
+    <property>
+        <name>dfs.block.size</name>
+        <value>134217728</value>
+    </property>
+
+
+yarnsite.xml -  http://doc.mapr.com/display/MapR/yarn-site.xml
+
+   
+        <configuration>
+       <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>JMNGD1BAX310V08</value>
+        <description>The hostname of the RM.</description>
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.resource-tracker.address</name>
+        <value>10.144.102.128:8025</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.scheduler.address</name>
+        <value>10.144.102.128:8030</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.address</name>
+        <value>10.144.102.128:8050</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.webapp.address</name>
+        <value>10.144.102.128:5050</value>
+   </property>
+
+        </configuration>
+
+
+mapemapred-site.xml - http://doc.mapr.com/display/MapR/mapred-site.xml
+    <configuration>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
